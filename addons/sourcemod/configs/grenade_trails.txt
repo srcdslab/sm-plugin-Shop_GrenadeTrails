@@ -1,0 +1,36 @@
+"Grenade_Trails"
+{
+	"name"				"Трейлы к грантам"				// Название категории в меню
+	"description"		"Цветной след за гранатами"		// Описание категории в меню
+
+	"material"			"materials/sprites/laserbeam.vmt"
+
+	"red"	// Идентефикатор в бд
+	{
+		"name"			"Красный (Стрелки)"		// Название пункта в меню
+		"color"			"255 0 0 255"	// Цвет трейла
+		"price"			"200"			// Цена покупки трейла
+		"sellprice"		"100"		// Цена продажи трейла
+		"duration"		"3600"		// Длительность использования предмета в секундах или 0, чтобы был навсегда
+		
+		"material"		"materials/sprites/trails/arrows.vmt"
+	}
+	"blue"
+	{
+		"name"			"Синий (Blade)"
+		"color"			"0 0 255 255"
+		"price"			"200"
+		"sellprice"		"100"
+		"duration"		"3600"
+		
+		"material"		"materials/sprites/trails/blade.vmt"
+	}
+	"green"
+	{
+		"name"			"Зеленый (Дефолт)"
+		"color"			"0 255 0 255"
+		"price"			"200"
+		"sellprice"		"100"
+		"duration"		"3600"
+	}
+}
