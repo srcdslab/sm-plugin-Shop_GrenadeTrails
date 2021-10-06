@@ -1,36 +1,128 @@
 "Grenade_Trails"
 {
-	"name"				"Трейлы к грантам"				// Название категории в меню
-	"description"		"Цветной след за гранатами"		// Описание категории в меню
+	"name"				"Grenade trails"				// Название категории в меню
+	"description"		"Add trails to grenades"		// Описание категории в меню
 
 	"material"			"materials/sprites/laserbeam.vmt"
 
-	"red"	// Идентефикатор в бд
+	"white"	// Идентефикатор в бд
 	{
-		"name"			"Красный (Стрелки)"		// Название пункта в меню
-		"color"			"255 0 0 255"	// Цвет трейла
-		"price"			"200"			// Цена покупки трейла
-		"sellprice"		"100"		// Цена продажи трейла
-		"duration"		"3600"		// Длительность использования предмета в секундах или 0, чтобы был навсегда
-		
-		"material"		"materials/sprites/trails/arrows.vmt"
+		"name"			"White"		// Название пункта в меню
+		"color"			"255 255 255 255"	// Цвет трейла
+		"price"			"250"			// Цена покупки трейла
+		"sellprice"		"50"		// Цена продажи трейла
+		"duration"		"0"		// Длительность использования предмета в секундах или 0, чтобы был навсегда
+	}
+	"red"
+	{
+		"name"			"Red"
+		"color"			"255 0 0 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
 	}
 	"blue"
 	{
-		"name"			"Синий (Blade)"
+		"name"			"Blue"
 		"color"			"0 0 255 255"
-		"price"			"200"
-		"sellprice"		"100"
-		"duration"		"3600"
-		
-		"material"		"materials/sprites/trails/blade.vmt"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"skyblue_laser"
+	{
+		"name"			"Sky Blue"
+		"color"			"0 128 255 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Aquamarine_laser"
+	{
+		"name"			"Aquamarine"
+		"color"			"127 255 212 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
 	}
 	"green"
 	{
-		"name"			"Зеленый (Дефолт)"
+		"name"			"Green"
 		"color"			"0 255 0 255"
-		"price"			"200"
-		"sellprice"		"100"
-		"duration"		"3600"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Pink_laser"
+	{
+		"name"			"Pink"
+		"color"			"255 0 128 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Orange_laser"
+	{
+		"name"			"Orange"
+		"color"			"255 128 0 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Yellow_laser"
+	{
+		"name"			"Yellow"
+		"color"			"255 255 0 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Cyan_laser"
+	{
+		"name"			"Cyan"
+		"color"			"0 255 255 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Purple_laser"
+	{
+		"name"			"Purple"
+		"color"			"255 0 255 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Violet_laser"
+	{
+		"name"			"Violet"
+		"color"			"128 0 255 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Brown_laser"
+	{
+		"name"			"Brown"
+		"color"			"139 69 19 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Olive"
+	{
+		"name" 			"Olive"
+		"color" 		"128 255 0 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
+	}
+	"Lime"
+	{
+		"name" 			"Lime"
+		"color" 		"0 255 128 255"
+		"price"			"250"
+		"sellprice"		"50"
+		"duration"		"0"
 	}
 }
