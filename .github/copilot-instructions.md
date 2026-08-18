@@ -7,18 +7,18 @@ This is a SourcePawn plugin for SourceMod that adds customizable trail effects t
 
 ### Core Technologies
 - **Language**: SourcePawn (.sp files)
-- **Platform**: SourceMod 1.11+ (minimum supported version)
-- **Build System**: SourceKnight (modern SourcePawn build tool)
+- **Platform**: SourceMod 1.12.x
+- **Build System**: Native GitHub Actions (spcomp via `rumblefrog/setup-sp`)
 - **Dependencies**: 
   - SourceMod base
   - Shop-Core plugin (for shop integration)
   - MultiColors include (for color utilities)
 
 ### Build Process
-- **Build Tool**: SourceKnight (configured in `sourceknight.yaml`)
-- **Build Command**: Uses GitHub Actions with `maxime1907/action-sourceknight@v1`
+- **Build Tool**: GitHub Actions workflow (`.github/workflows/ci.yml`)
+- **Build Command**: Dependencies are cloned and `spcomp` compiles the plugin directly
 - **Output**: Compiled `.smx` files in `/addons/sourcemod/plugins/`
-- **Dependencies**: Auto-downloaded during build process
+- **Dependencies**: Cloned from their git repos during the CI "Install dependencies" step
 
 ## Project Structure
 
@@ -30,7 +30,6 @@ This is a SourcePawn plugin for SourceMod that adds customizable trail effects t
 │       └── grenade_trails.txt        # KeyValues config for trail definitions
 ├── .github/
 │   └── workflows/ci.yml              # Build and release automation
-├── sourceknight.yaml                 # Build configuration and dependencies
 └── .gitignore                        # Excludes .smx files and build artifacts
 ```
 
@@ -85,13 +84,13 @@ This is a SourcePawn plugin for SourceMod that adds customizable trail effects t
 ### Making Changes
 1. **Plugin Logic**: Modify `Shop_GrenadeTrails.sp` for functionality changes
 2. **Trail Options**: Edit `grenade_trails.txt` to add/modify available trails
-3. **Dependencies**: Update `sourceknight.yaml` if new includes are needed
+3. **Dependencies**: Update `.github/workflows/ci.yml` if new includes are needed
 4. **Testing**: No automated tests - requires manual testing on game server
 
 ### Build and Test Process
 ```bash
-# Build is handled by GitHub Actions
-# Local development requires SourceKnight setup
+# Build is handled by GitHub Actions (.github/workflows/ci.yml)
+# Local development requires SourceMod 1.12.x and spcomp
 # Test by deploying to development server
 ```
 
@@ -144,7 +143,7 @@ This is a SourcePawn plugin for SourceMod that adds customizable trail effects t
 1. **Trail not appearing**: Check sprite precaching and client state
 2. **Shop integration broken**: Verify Shop-Core dependency and callbacks
 3. **Config errors**: Validate KeyValues syntax in grenade_trails.txt
-4. **Build failures**: Check SourceKnight configuration and dependencies
+4. **Build failures**: Check the GitHub Actions workflow (`.github/workflows/ci.yml`) and dependency clone steps
 
 ### Debug Approaches
 - **Console Output**: Use `PrintToServer()` for server-side debugging
