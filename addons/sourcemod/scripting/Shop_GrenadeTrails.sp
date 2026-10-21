@@ -10,14 +10,14 @@ int g_iSpriteIndex;
 int g_iClientColor[MAXPLAYERS+1][4];
 int g_iClientSpriteIndex[MAXPLAYERS+1] = { -1, ... };
 
-Handle g_hKv = INVALID_HANDLE;
+KeyValues g_hKv = null;
 
 public Plugin myinfo =
 {
 	name = "[Shop] Grenade Trails",
 	description = "Add trails to grenades",
 	author = "R1KO",
-	version = "1.2",
+	version = "1.3",
 	url = ""
 };
 
@@ -33,36 +33,36 @@ public void OnMapStart()
 {
 	if (g_hKv)
 	{
-		CloseHandle(g_hKv);
+		delete g_hKv;
 	}
 
 	char sBuffer[256];
 
-	g_hKv = CreateKeyValues("Grenade_Trails");
+	g_hKv = new KeyValues("Grenade_Trails");
 	Shop_GetCfgFile(sBuffer, sizeof(sBuffer), "grenade_trails.txt");
-	if (!(FileToKeyValues(g_hKv, sBuffer)))
+	if (!(g_hKv.ImportFromFile(sBuffer)))
 	{
 		SetFailState("Couldn't parse file %s", sBuffer);
 	}
 
-	KvGetString(g_hKv, "material", sBuffer, sizeof(sBuffer), "materials/sprites/laserbeam.vmt");
+	g_hKv.GetString("material", sBuffer, sizeof(sBuffer), "materials/sprites/laserbeam.vmt");
 
 	g_iSpriteIndex = PrecacheModel(sBuffer, true);
 
-	KvRewind(g_hKv);
+	g_hKv.Rewind();
 
-	if (KvGotoFirstSubKey(g_hKv, true))
+	if (g_hKv.GotoFirstSubKey(true))
 	{
 		int index;
 		do {
-			KvGetString(g_hKv, "material", sBuffer, sizeof(sBuffer));
+			g_hKv.GetString("material", sBuffer, sizeof(sBuffer));
 			if (sBuffer[0] && (index = PrecacheModel(sBuffer, true)) > 0)
 			{
-				KvSetNum(g_hKv, "sprite_indx", index);
+				g_hKv.SetNum("sprite_indx", index);
 			}
-		} while (KvGotoNextKey(g_hKv, true));
+		} while (g_hKv.GotoNextKey(true));
 	}
-	KvRewind(g_hKv);
+	g_hKv.Rewind();
 }
 
 public void OnPluginEnd()
@@ -77,32 +77,32 @@ public void Shop_Started()
 		OnMapStart();
 	}
 
-	KvRewind(g_hKv);
+	g_hKv.Rewind();
 
 	char sName[64];
 	char sDescription[64];
 
-	KvGetString(g_hKv, "name", sName, sizeof(sName), "Grenade Trails");
-	KvGetString(g_hKv, "description", sDescription, sizeof(sDescription));
+	g_hKv.GetString("name", sName, sizeof(sName), "Grenade Trails");
+	g_hKv.GetString("description", sDescription, sizeof(sDescription));
 
 	CategoryId category_id = Shop_RegisterCategory("grenade_trails", sName, sDescription);
 
-	KvRewind(g_hKv);
+	g_hKv.Rewind();
 
-	if (KvGotoFirstSubKey(g_hKv, true))
+	if (g_hKv.GotoFirstSubKey(true))
 	{
 		do {
-			if (KvGetSectionName(g_hKv, sName, sizeof(sName)) && Shop_StartItem(category_id, sName))
+			if (g_hKv.GetSectionName(sName, sizeof(sName)) && Shop_StartItem(category_id, sName))
 			{
-				KvGetString(g_hKv, "name", sDescription, sizeof(sDescription), sName);
-				Shop_SetInfo(sDescription, "", KvGetNum(g_hKv, "price", 1000), KvGetNum(g_hKv, "sellprice", -1), Item_Togglable, KvGetNum(g_hKv, "duration", 604800));
-				Shop_SetCustomInfo("level", KvGetNum(g_hKv, "level", 0));
+				g_hKv.GetString("name", sDescription, sizeof(sDescription), sName);
+				Shop_SetInfo(sDescription, "", g_hKv.GetNum("price", 1000), g_hKv.GetNum("sellprice", -1), Item_Togglable, g_hKv.GetNum("duration", 604800));
+				Shop_SetCustomInfo("level", g_hKv.GetNum("level", 0));
 				Shop_SetCallbacks(_, OnEquipItem);
 				Shop_EndItem();
 			}
-		} while (KvGotoNextKey(g_hKv, true));
+		} while (g_hKv.GotoNextKey(true));
 	}
-	KvRewind(g_hKv);
+	g_hKv.Rewind();
 }
 
 public ShopAction OnEquipItem(int iClient, CategoryId category_id, char[] category, ItemId item_id, char[] item, bool isOn, bool elapsed)
@@ -115,13 +115,13 @@ public ShopAction OnEquipItem(int iClient, CategoryId category_id, char[] catego
 
 	Shop_ToggleClientCategoryOff(iClient, category_id);
 
-	KvRewind(g_hKv);
+	g_hKv.Rewind();
 
-	if (KvJumpToKey(g_hKv, item, false))
+	if (g_hKv.JumpToKey(item, false))
 	{
-		KvGetColor(g_hKv, "color", g_iClientColor[iClient][0], g_iClientColor[iClient][1], g_iClientColor[iClient][2], g_iClientColor[iClient][3]);
+		g_hKv.GetColor("color", g_iClientColor[iClient][0], g_iClientColor[iClient][1], g_iClientColor[iClient][2], g_iClientColor[iClient][3]);
 
-		int index = KvGetNum(g_hKv, "sprite_indx", 0);
+		int index = g_hKv.GetNum("sprite_indx", 0);
 		if (index)
 		{
 			g_iClientSpriteIndex[iClient] = index;
