@@ -17,12 +17,14 @@ public Plugin myinfo =
 	name = "[Shop] Grenade Trails",
 	description = "Add trails to grenades",
 	author = "R1KO",
-	version = "1.3",
+	version = "1.3.1",
 	url = ""
 };
 
 public void OnPluginStart()
 {
+	LoadTranslations("Shop_GrenadeTrails.phrases");
+
 	if (Shop_IsStarted())
 	{
 		Shop_Started();
@@ -132,7 +134,7 @@ public ShopAction OnEquipItem(int iClient, CategoryId category_id, char[] catego
 		}
 		return Shop_UseOn;
 	}
-	PrintToChat(iClient, "Failed to use \"%s\"!.", item);
+	PrintToChat(iClient, "%t", "Failed To Use Item", item);
 	return Shop_Raw;
 }
 

@@ -1,0 +1,14 @@
+"Phrases"
+{
+	"Failed To Use Item"
+	{
+		"#format"	"{1:s}"
+		"en"		"Failed to use \"{1}\"!"
+		"fr"		"Impossible d'utiliser \"{1}\" !"
+		"ru"		"Не удалось использовать \"{1}\"!"
+		"es"		"¡No se pudo usar \"{1}\"!"
+		"de"		"\"{1}\" konnte nicht verwendet werden!"
+		"pt"		"Não foi possível usar \"{1}\"!"
+		"chi"		"无法使用“{1}”！"
+	}
+}
