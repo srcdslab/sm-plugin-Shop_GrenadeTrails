@@ -17,7 +17,7 @@ public Plugin myinfo =
 	name = "[Shop] Grenade Trails",
 	description = "Add trails to grenades",
 	author = "R1KO",
-	version = "1.3.1",
+	version = "1.3.2",
 	url = ""
 };
 
