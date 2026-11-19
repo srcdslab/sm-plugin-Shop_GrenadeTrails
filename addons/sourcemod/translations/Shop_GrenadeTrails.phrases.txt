@@ -10,5 +10,11 @@
 		"de"		"\"{1}\" konnte nicht verwendet werden!"
 		"pt"		"Não foi possível usar \"{1}\"!"
 		"chi"		"无法使用“{1}”！"
+		"pl"		"Nie udało się użyć \"{1}\"!"
+		"tr"		"\"{1}\" kullanılamadı!"
+		"it"		"Impossibile usare \"{1}\"!"
+		"ua"		"Не вдалося використати \"{1}\"!"
+		"zho"		"無法使用「{1}」！"
+		"cze"		"Nepodařilo se použít \"{1}\"!"
 	}
 }
